@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const ConnectToDB = async (uri: string) => {
+const ConnectToDB = async (uri: string):Promise<void> => {
   mongoose.connection.on('open', () => {
     console.log('connection to database established');
   });
