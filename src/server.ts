@@ -1,9 +1,9 @@
 import http from 'http';
 import { Server as SocketIOServer } from 'socket.io';
 import dotenv from 'dotenv';
-import app from './src/app';
-import chatSocketHandler from './src/sockets/chatSocket';
-import ConnectToDB from './src/config/database';
+import app from './app';
+import chatSocketHandler from './sockets/chatSocket';
+import ConnectToDB from './config/database';
 
 dotenv.config();
 
