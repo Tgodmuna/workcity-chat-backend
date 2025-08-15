@@ -9,7 +9,7 @@ import chatRoutes from './routes/chatRoutes';
 // Load Environment Variables
 dotenv.config();
 
-const requiredEnvVars = ['PORT', 'MONGO_URI', 'JWT_SECRET'];
+const requiredEnvVars = ['PORT', 'PRO_MONGO_URI','DEV_MONGO_URI', 'JWT_SECRET'];
 
 const missingVars = requiredEnvVars.filter(key => !process.env[key]);
 if (missingVars.length > 0) {
@@ -21,7 +21,7 @@ if (missingVars.length > 0) {
 
 // Handle Uncaught Errors Globally
 process.on('uncaughtException', err => {
-  console.error(' UNCAUGHT EXCEPTION:', err);
+  console.error(' UNCAUGHT EXCEPTION:', err.message);
   process.exit(1);
 });
 
