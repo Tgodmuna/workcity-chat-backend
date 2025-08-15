@@ -22,6 +22,10 @@ io.on('connection', socket => {
 });
 
 // Connect to MongoDB & start server
-(async (uri: string) => await ConnectToDB(uri))(MONGO_URI);
-
-server.listen(PORT, () => console.log(`Server running on port ${PORT} `));
+console.log('connecting to Database.....');
+( async ( uri: string ) =>
+{
+  await ConnectToDB( uri );
+  
+  server.listen( PORT, () => console.log( `Server running on port ${ PORT } ` ) );
+} )( MONGO_URI );
