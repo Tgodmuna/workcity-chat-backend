@@ -1,11 +1,13 @@
-import { Document, Types } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
 export default interface IMessage extends Document {
-  conversationId: string;
-  sender: Types.ObjectId;
-  receiver: Types.ObjectId;
-  content: string;
+  conversation: mongoose.Types.ObjectId;
+  sender: mongoose.Types.ObjectId;
+  content?: string;
   read: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+   fileUrl?: string;
+  readBy: mongoose.Types.ObjectId[];
+  createdAt:Date
 }
+
+export  type MessageDocument = Document & IMessage;

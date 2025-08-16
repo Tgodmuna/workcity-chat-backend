@@ -1,15 +1,19 @@
 import mongoose, { Schema } from 'mongoose';
-import IMessage from '../interfaces/IMessage';
+import IMessage, { type MessageDocument } from '../interfaces/IMessage';
 
 const MessageSchema = new Schema<IMessage>(
   {
-    conversationId: { type: String, required: true },
-    sender: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    receiver: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    content: { type: String, required: true },
-    read: { type: Boolean, default: false },
+    conversation: { type: Schema.Types.ObjectId, ref: "Conversation", required: true },
+    sender: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    content: { type: String, trim: true },
+    fileUrl: { type: String },
+    readBy: [ { type: Schema.Types.ObjectId, ref: "User" } ],
+    createdAt: {
+      type: Date,
+      default:Date.now()
+    }
   },
   { timestamps: true }
 );
 
-export default mongoose.model<IMessage>('Message', MessageSchema);
+export default mongoose.model<MessageDocument>("Message", MessageSchema);
